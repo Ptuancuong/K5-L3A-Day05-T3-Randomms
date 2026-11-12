@@ -465,7 +465,7 @@ Ca lạ dùng phân loại theo quy tắc nên vẫn có thể nhận diện thi
 <img width="1915" height="1095" alt="image" src="https://github.com/user-attachments/assets/005094b7-be94-4df4-ab82-00f7c0ea3e61" />
 
 
-Lưu ở `prototype/screenshots/01-k2.png` và `prototype/screenshots/02-xac-nhan.png`.
+Lưu ở `prototype/01-k2.png` và `prototype/02-xac-nhan.png`.
 
 ### 5.4. Các lựa chọn giao diện và phương án đã loại
 
