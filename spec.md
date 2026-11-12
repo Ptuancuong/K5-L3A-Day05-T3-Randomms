@@ -479,6 +479,32 @@ Lưu ở `prototype/screenshots/01-k2.png` và `prototype/screenshots/02-xac-nha
 
 ## §6. Tốt là gì  (chặng 6 — nhẹ, bỏ được nếu thiếu giờ)
 - 3 tiêu chí Pass/Fail chấm được; thiết kế của nhóm đạt tiêu chí nào trên 2 kịch bản đắt nhất; lỗi còn lại.
+### 6.1. Ba tiêu chí Pass/Fail
+
+| ID | Tiêu chí | Pass khi | Fail khi |
+|---|---|---|---|
+| E1 | Không thực hiện khi ý định chưa rõ | K2 và K4 đều được hỏi lại; chưa đổi vé hoặc gửi hoàn | AI tự đổi hoặc gửi hoàn từ câu mơ hồ |
+| E2 | Chỉ thực hiện khi đủ điều kiện và có xác nhận | Đổi cần đủ chỗ, lượt giữ còn hạn và khách xác nhận; hoàn cần đủ dữ liệu, báo giá còn hạn và đồng ý riêng | Thiếu điều kiện vẫn thực hiện; gửi lặp hoặc cho đổi sau khi đã gửi hoàn |
+| E3 | Hiển thị đúng trạng thái, hậu quả và đường sửa | Phân biệt giữ với đổi, gửi yêu cầu với đã hoàn tiền; có cảnh báo, quay lại trước xác nhận và chuyển nhân viên | Báo sai trạng thái, thiếu cảnh báo hoặc hứa hoàn tác hành động không thể đảo |
+
+### 6.2. Chấm thử trên hai kịch bản đắt nhất
+
+| Kịch bản | E1 | E2 | E3 | Bằng chứng |
+|---|---|---|---|---|
+| K2 — “Chuyến tối còn chỗ thì đổi đi” | Pass ở kiểm tra logic | Pass ở kiểm tra logic | Đạt ở thiết kế, chưa kiểm tra UI | AI hỏi lại vì BM 217 chỉ còn 1 chỗ cho 2 người; chỉ đổi sau khi giữ chuyến đủ chỗ và xác nhận còn hiệu lực. Có cảnh báo dùng lần đổi miễn phí và nút quay lại sửa. |
+| K4 — “Hoàn hết… còn chuyến sớm thì đổi” | Pass ở kiểm tra logic | Pass ở kiểm tra logic | Đạt ở thiết kế, chưa kiểm tra UI | AI hỏi khách chọn đổi hay hoàn. Thiếu dữ liệu thì chặn gửi; bật fixture R1 vẫn cần đồng ý riêng. Kết quả ghi “yêu cầu hoàn đang chờ xử lý”, không báo tiền đã về. |
+
+Kết quả trên dựa vào kiểm tra JavaScript bằng DOM giả lập và đối chiếu thiết kế. Chưa xác nhận Pass toàn bộ trải nghiệm trên trình duyệt.
+
+### 6.3. Lỗi và giới hạn còn lại
+
+- Chưa kiểm tra trực tiếp bố cục, thao tác bàn phím và giao diện trên điện thoại.
+- Chat phân loại theo từ khoá nên có thể hiểu sai câu lạ; không có AI thật.
+- Số chỗ và kết quả thao tác là dữ liệu mô phỏng, không được cập nhật từ hãng.
+- Tải lại trang làm mất trạng thái phiên; chưa có backend lưu giao dịch.
+- Nhánh mất kết nối chỉ mô phỏng kết quả đổi thành công khi tra cứu lại, chưa bao phủ mọi kết quả phục hồi.
+
+
 
 ## §7. Demo
 - Ca lạ nhận được ở demo: prototype đã làm gì, và nhóm có đổi ý gì sau ca đó không.
