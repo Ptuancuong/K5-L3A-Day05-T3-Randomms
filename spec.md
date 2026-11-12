@@ -76,9 +76,58 @@ Thêm:
 - Một mức tự chủ đã đổi lời hứa nào với người dùng.
 
 ## §5. Prototype  (chặng 5)
-- Link hoặc file · công cụ · phần nào mock · có lời gọi AI thật không.
-- 1–2 ảnh có đánh số; mỗi số: thể hiện gì · nguyên tắc HAX/PAIR nào · mức tự chủ nào.
-- Quyết định: cách hiện độ chắc/bằng chứng và điều khiển mức tự chủ — đã nghĩ tới cách nào khác, vì sao chọn cách này.
+### 5.1. File, công cụ và phần mô phỏng
+- File chạy: [prototype/index.html](prototype/index.html).
+- Hướng dẫn: [prototype/README.md](prototype/README.md).
+- Công cụ: HTML, CSS, JavaScript thuần, AI hỗ trợ viết và kiểm tra code.
+- Mở file trực tiếp bằng trình duyệt; không cần cài thư viện, backend, đăng nhập hoặc API key.
+- Không có lời gọi AI thật. Ô chat phân loại bằng quy tắc dựng, nút ca thử cung cấp K1–K9. Đây không phải chatbot hiểu ngôn ngữ tổng quát.
+- Tra cứu, giữ/nhả chỗ, đổi, gửi hoàn, bàn giao, lỗi và phục hồi đều mô phỏng cục bộ. Số chỗ lấy từ fixture cố định; không có tồn chỗ trực tuyến hoặc nhân viên thật nhận ca.
+- Tải lại trang sẽ bắt đầu lại phiên mô phỏng; không có lưu trạng thái giao dịch bền vững.
+
+### 5.2. Bố cục và các nhánh bấm được
+
+**Không gian 1 — hội thoại và phương án:** thanh đặt chỗ cho biết chuyến đã huỷ, hai hành khách và trạng thái hiện tại. Hội thoại bên trái; phương án, chi tiết hoàn hoặc hồ sơ hỗ trợ bên phải. Màn hẹp xếp thành một cột.
+
+**Không gian 2 — xem lại và quyết định:** chi tiết chuyến, người đi, đồng hồ giữ, cảnh báo dùng quyền đổi và nút xác nhận. Nhánh hoàn dùng cùng vùng quyết định, trình bày tiền, nơi nhận, thời gian và xác nhận riêng. Không mở thêm chuỗi trang ngoài phạm vi.
+
+| Nhánh | Cách bấm | Kết quả thiết kế |
+|---|---|---|
+| K2 | Chọn tin mẫu → BM 201/BM 205 → giữ → xem lại → xác nhận | Không chọn được BM 217 cho cả hai; giữ chưa đổi; đổi sau duyệt |
+| Sửa lựa chọn | Giữ → quay lại sửa/bỏ giữ | Nhả lượt giữ mô phỏng, chưa đổi vé, chọn lại |
+| Hết hạn | Giữ → bảng demo → cho hết hạn ngay | Khoá xác nhận cũ; phải quay lại kiểm tra và giữ mới |
+| K4 thiếu dữ liệu | K4 → xem chi tiết hoàn, R1 tắt | Cảnh báo thiếu dữ liệu; không có gửi hoàn hợp lệ; chuyển người |
+| K4 đủ dữ liệu giả | Bật R1 → K4 → chi tiết → đọc → đánh dấu đồng ý → gửi | REF-7Q2K-R1 chờ xử lý; không báo tiền đã về; không huỷ được |
+| Ngoài thẩm quyền | Tin đổi tên hoặc trẻ bay một mình | Không thực hiện yêu cầu; lập hồ sơ bàn giao |
+| K9 | Sau đổi → báo đổi nhầm | Chuyển người, không hứa hoàn tác |
+| Lỗi hệ thống | Chọn tình huống demo trước xác nhận | Hết chỗ/lỗi đọc thì chưa đổi; kết quả chưa rõ thì khoá gửi lặp và tra lại |
+| Ca lạ | Nhập câu chưa được nhận diện | Hỏi rõ hướng hỗ trợ; không tự đổi/hoàn chỉ vì chưa hiểu |
+
+Ca lạ dùng phân loại theo quy tắc nên vẫn có thể nhận diện thiếu hoặc nhầm. Các bước đổi/hoàn tiếp tục có kiểm tra và xác nhận riêng. Không khẳng định prototype xử lý được mọi câu nhập.
+
+### 5.3. Bằng chứng và nguyên tắc trên màn hình
+
+| Dấu | Vị trí cụ thể | Nguyên tắc | Mức tự chủ thể hiện |
+|---|---|---|---|
+| ① | Thẻ BM 217: một chỗ cho hai hành khách | G11: giải thích căn cứ | Chặn phương án không đủ chỗ |
+| ② | Câu AI hỏi lại K2/K4 trong hội thoại | G10: thu hẹp phạm vi khi chưa rõ | Chưa tự đổi hoặc gửi hoàn |
+| ③ | Nút quay lại sửa/bỏ giữ; quay lại xem chuyến ở nhánh hoàn | G9: sửa trước hành động | Nhả giữ được; xác nhận cũ không còn hiệu lực |
+| Cảnh báo và nút duyệt | Màn xem lại chuyến/chi tiết hoàn R1 | G11 và G9 | Cần khách duyệt hành động khó đảo |
+| Hồ sơ chuyển | Lý do, trạng thái và lịch sử gửi kèm | Đường lui khi ngoài phạm vi | Chỉ tạo yêu cầu mô phỏng, chưa phải người đã nhận |
+
+**Ảnh minh chứng:
+
+Lưu ở `prototype/screenshots/01-k2.png` và `prototype/screenshots/02-xac-nhan.png`.
+
+### 5.4. Các lựa chọn giao diện và phương án đã loại
+
+- **Hiện căn cứ thay vì % tự tin:** số chỗ, hành khách và trạng thái giúp khách tự kiểm tra; không có dữ liệu để tạo phần trăm tin cậy có ý nghĩa.
+- **Tách hội thoại và xác nhận:** chat giúp làm rõ, còn màn xem lại tập hợp quyết định. Loại chỉ dùng nút “Đồng ý” trong chat vì không rõ đang duyệt hành động nào.
+- **Giữ chỗ có đồng hồ và nhãn chưa đổi:** tránh khách tưởng vé đã đổi. Loại báo “đã xong” khi mới giữ.
+- **Bảng demo tách khỏi luồng chính:** người xem có thể tạo ca lỗi nhưng các công tắc không bị nhầm thành tính năng của hãng thật.
+- **Hoàn R1 có nhãn nguồn và xác nhận riêng:** cho thử đầy đủ mà không bịa dữ liệu của fixture gốc. Loại tự điền dữ liệu không ghi nguồn.
+- **Không có nút hoàn tác đổi hoặc huỷ yêu cầu hoàn:** hệ thống không có quyền đó; hỗ trợ người là đường phục hồi, không hứa kết quả.
+
 
 ## §6. Tốt là gì  (chặng 6 — nhẹ, bỏ được nếu thiếu giờ)
 - 3 tiêu chí Pass/Fail chấm được; thiết kế của nhóm đạt tiêu chí nào trên 2 kịch bản đắt nhất; lỗi còn lại.
