@@ -266,6 +266,9 @@ Ca lạ dùng phân loại theo quy tắc nên vẫn có thể nhận diện thi
 | Hồ sơ chuyển | Lý do, trạng thái và lịch sử gửi kèm | Đường lui khi ngoài phạm vi | Chỉ tạo yêu cầu mô phỏng, chưa phải người đã nhận |
 
 **Ảnh minh chứng:
+<img width="1915" height="1086" alt="image" src="https://github.com/user-attachments/assets/2d84e120-def4-4fae-b78e-418e7281396b" />
+<img width="1915" height="1095" alt="image" src="https://github.com/user-attachments/assets/005094b7-be94-4df4-ab82-00f7c0ea3e61" />
+
 
 Lưu ở `prototype/screenshots/01-k2.png` và `prototype/screenshots/02-xac-nhan.png`.
 
