@@ -6,11 +6,11 @@
 
 ```markdown
 [Danh sách thành viên và việc mỗi người làm — copy bảng từ README]
-| Họ và Tên | Mã Học Viên | Việc đã làm |
+| Họ và tên | Mã học viên | Việc đã làm |
 |---|---|---|
-| Phạm Tuấn Cường | 2A202603584 |  |
-| Bùi Xuân Thành | 2A202603521 |  |
-| Nguyễn Minh Đạt | 2A202603582 |  |
+| Phạm Tuấn Cường | 2A202603584 | §1: xác định lát cắt và phạm vi. §5: xây dựng prototype, minh hoạ nguyên tắc HAX/PAIR và mức tự chủ trên giao diện. |
+| Bùi Xuân Thành | 2A202603521 | §2: xây dựng kịch bản rủi ro, chọn hai ca nguy hiểm nhất. §3: thiết kế cách AI xử lý khi sai, câu trả lời, bước tiếp theo và nguyên tắc HAX/PAIR. |
+| Nguyễn Minh Đạt | 2A202603582 | §4: xác định mức tự chủ cho từng tool và lập luận lựa chọn. §6: xây dựng tiêu chí Pass/Fail, kiểm tra hai ca nguy hiểm nhất và ghi nhận lỗi còn lại. |
 
 ## §1. Lát cắt & phạm vi
 - Lát cắt (chép từ track).
