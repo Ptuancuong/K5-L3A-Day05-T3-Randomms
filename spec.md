@@ -101,7 +101,7 @@ Vì sao đắt hơn các kịch bản còn lại:
 
 **AI nói (nguyên văn):**
 
-> Mình **chưa đổi vé** cho bạn nhé. "Ok" là bạn chọn chuyến nào: **BM 201 lúc 07:00** hay **BM 205 lúc 09:30** sáng mai? Bạn chọn ở thẻ bên dưới, tick đủ người bay, rồi bấm xác nhận. Trong lúc bạn chọn, mình đang giữ chỗ BM 201 cho 2 người tới 15:22, và bạn **chưa mất** lần đổi miễn phí.
+> Mình **chưa đổi vé** cho bạn nhé. "Ok" là bạn chọn chuyến nào: **BM 201 lúc 07:00** hay **BM 205 lúc 09:30** sáng mai? Bạn chọn ở thẻ bên dưới, tick đủ người bay, rồi bấm xác nhận. Trong lúc bạn chọn, mình đang giữ chỗ BM 201 cho 2 người tới 15:21, và bạn **chưa mất** lần đổi miễn phí.
 
 **Người dùng thấy** (prototype, màn hình 1):
 
@@ -138,7 +138,7 @@ _Còn trong ân hạn_ (vé mới chưa xuất). AI nói:
 
 _Đã quá ân hạn_ (vé BM 201 đã xuất). AI nói:
 
-> Xin lỗi bạn, vé đã xuất sang **BM 201 07:00** và **lần đổi miễn phí đã được dùng**. Mình **không tự đổi lại được**. Mình đã chuyển bạn sang nhân viên hỗ trợ (ưu tiên cao, chờ khoảng 5 phút), kèm toàn bộ lịch sử nên bạn không phải kể lại. Trong lúc chờ, mình giữ chỗ **BM 205 09:30** cho 2 người tới 15:47 để nhân viên còn phương án.
+> Xin lỗi bạn, vé đã xuất sang **BM 201 07:00** và **lần đổi miễn phí đã được dùng**. Mình **không tự đổi lại được**. Mình đã chuyển bạn sang nhân viên hỗ trợ (ưu tiên cao, chờ khoảng 5 phút), kèm toàn bộ lịch sử nên bạn không phải kể lại. Trong lúc chờ, mình giữ chỗ **BM 205 09:30** cho 2 người tới 15:26 để nhân viên còn phương án.
 
 - Người dùng thấy: hộp "Đã chuyển nhân viên" (⑥) với thời gian chờ và **những gì nhân viên đã thấy**.
 - Ai được báo: **nhân viên hỗ trợ, ngay lập tức**, ưu tiên cao (màn hình 2). Nhân viên thấy:
