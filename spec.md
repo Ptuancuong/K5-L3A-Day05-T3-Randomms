@@ -506,7 +506,4 @@ Kết quả trên dựa vào kiểm tra JavaScript bằng DOM giả lập và đ
 
 
 
-
-## §7. Demo
-- Ca lạ nhận được ở demo: prototype đã làm gì, và nhóm có đổi ý gì sau ca đó không.
 ```
