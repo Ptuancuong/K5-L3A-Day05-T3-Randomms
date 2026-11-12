@@ -4,11 +4,10 @@
 
 | Họ và Tên       | Mã Học Viên | Việc đã làm                                                                                  |
 | --------------- | ----------- | -------------------------------------------------------------------------------------------- |
-| Phạm Tuấn Cường | 2A202603584 | Làm bản đầy đủ trên nhánh `ban-cuong`: §1–§6 + prototype `prototype/index.html` (2 màn hình) |
+| Phạm Tuấn Cường | 2A202603584 | §1–§6 + prototype `prototype/index.html` (2 màn hình) |
 | Bùi Xuân Thành  | 2A202603521 |                                                                                              |
 | Nguyễn Minh Đạt | 2A202603582 |                                                                                              |
 
-> Cách nhóm làm: mỗi thành viên làm trọn một bản trên nhánh riêng (`ban-<tên>`), sau đó chấm chéo theo `04-rubric.md` và chốt bản tốt nhất vào `main`. Các phương án bị loại ở bản khác được ghi lại trong §4 (tool khó xếp nhất) và §5 (cách hiện đã cân nhắc).
 
 **Dữ liệu dùng trong toàn bài** (dữ liệu dựng của track, `tra_cuu_dat_cho` trả về):
 
