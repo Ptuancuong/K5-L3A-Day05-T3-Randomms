@@ -13,8 +13,43 @@
 | Nguyễn Minh Đạt | 2A202603582 | §4: xác định mức tự chủ cho từng tool và lập luận lựa chọn. §6: xây dựng tiêu chí Pass/Fail, kiểm tra hai ca nguy hiểm nhất và ghi nhận lỗi còn lại. |
 
 ## §1. Lát cắt & phạm vi
-- Lát cắt (chép từ track).
-- 3 việc tính năng KHÔNG làm, mỗi việc một câu vì sao.
+**Lát cắt:** Trong **Đặt chỗ của tôi**, khi **hành khách** vừa nhận tin chuyến bay bị huỷ và nhắn hỏi, **AI đề xuất và giữ chỗ chuyến thay thế, hỏi lại cho rõ, đổi vé, hay chuyển nhân viên**, để khách tới nơi kịp mà không mất vé hay tiền vì một thao tác không đảo lại được.
+**Ba việc không làm:**
+1. Không đổi tên hành khách: bộ tool không hỗ trợ; yêu cầu được chuyển nhân viên.
+2. Không tự quyết định phương án trẻ nhỏ bay một mình: trường hợp này cần nhân viên kiểm tra điều kiện vận chuyển.
+3. Không hứa bồi thường ngoài chính sách dựng: chuyến bị huỷ do thời tiết không có bồi thường tiền mặt.
+
+
+### Dữ liệu và nguồn sự thật
+
+Nguồn chính là fixture của `tracks/t3-travel.md` trong repo đề; thông tin sản phẩm thật được dùng làm bối cảnh theo tài liệu đề, không phải chính sách hoạt động của prototype.
+
+| Dữ liệu | Giá trị dựng |
+|---|---|
+| Thời điểm fixture | 15:00 ngày 12/11/2026 |
+| Đặt chỗ | TRV-7Q2K · Phổ thông Tiết kiệm |
+| Hành khách | Nguyễn Minh An, 34 tuổi; Nguyễn Gia Bình, 5 tuổi |
+| Chuyến cũ | BM 213 · Hà Nội → TP.HCM · 12/11/2026 19:00 · huỷ do bão |
+| BM 217 | 12/11 21:00 · còn 1 chỗ, không đủ cả hai |
+| BM 201 | 13/11 07:00 · còn 9 chỗ |
+| BM 205 | 13/11 09:30 · còn 4 chỗ |
+| Chính sách dựng | Đổi miễn phí một lần trong 48 giờ hoặc hoàn toàn bộ; không bồi thường tiền mặt do thời tiết |
+
+**Fixture bổ sung R1 do nhóm tự dựng:** minh hoạ trường hợp đã có dữ liệu hoàn để kiểm tra toàn bộ bước duyệt và gửi. Đây không phải dữ liệu do đề hoặc Traveloka cung cấp.
+
+| Trường | Giá trị giả R1 |
+|---|---|
+| Vé An | 1.200.000 VND |
+| Vé Bình | 900.000 VND |
+| Phí hoàn | 0 VND |
+| Tổng yêu cầu | 2.100.000 VND, cho cả hai hành khách |
+| Phương thức thanh toán gốc mô phỏng | Ví TEST-WALLET |
+| Thời gian xử lý dự kiến dựng | Tối đa 90 ngày; không phải cam kết dịch vụ thật |
+| Hiệu lực báo giá | 10 phút từ lúc mở chi tiết |
+| Sau gửi | REF-7Q2K-R1 đang chờ xử lý; không huỷ được yêu cầu, chưa phải tiền đã về |
+
+Mặc định R1 tắt: thiếu dữ liệu thì chặn gửi và chuyển nhân viên. Bật R1 ở bảng demo chỉ đổi fixture, không cho phép bỏ xác nhận. Thông tin không có trong fixture thì AI không được tự khẳng định.
+
 
 ## §2. Kịch bản rủi ro  (chặng 2)
 - ≥8 kịch bản, mỗi lớp ①②③④ ít nhất một; mỗi kịch bản: tin người dùng · lớp · AI có thể sai thế nào · sản phẩm tốt nên làm gì · nhãn (nhẹ / sửa được / không chấp nhận được).
