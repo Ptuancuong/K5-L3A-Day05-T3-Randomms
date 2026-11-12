@@ -11,11 +11,11 @@
 
 **Dữ liệu dùng trong toàn bài** (dữ liệu dựng của track, `tra_cuu_dat_cho` trả về):
 
-- Bây giờ là 15:00 12/11/2026. Đặt chỗ TRV-7Q2K, hạng Phổ thông Tiết kiệm.
-- Hành khách: Nguyễn Minh An (34 tuổi) · Nguyễn Gia Bình (5 tuổi).
-- Chuyến gốc: **BM 213** HN → HCM 12/11 19:00, **ĐÃ HUỶ do thời tiết (bão)**.
-- Chính sách hãng Bay Mẫu: đổi miễn phí **một lần** trong 48 giờ, hoặc hoàn toàn bộ; huỷ do thời tiết thì **không bồi thường tiền mặt**.
-- Chuyến thay thế còn chỗ: BM 217 12/11 21:00 (**1 chỗ**) · BM 201 13/11 07:00 (9 chỗ) · BM 205 13/11 09:30 (4 chỗ).
+ Bây giờ là 15:00 12/11/2026. Đặt chỗ TRV-7Q2K, hạng Phổ thông Tiết kiệm.
+ Hành khách: Nguyễn Minh An (34 tuổi) · Nguyễn Gia Bình (5 tuổi).
+ Chuyến gốc: **BM 213** HN → HCM 12/11 19:00, **ĐÃ HUỶ do thời tiết (bão)**.
+ Chính sách hãng Bay Mẫu: đổi miễn phí **một lần** trong 48 giờ, hoặc hoàn toàn bộ; huỷ do thời tiết thì **không bồi thường tiền mặt**.
+ Chuyến thay thế còn chỗ: BM 217 12/11 21:00 (**1 chỗ**) · BM 201 13/11 07:00 (9 chỗ) · BM 205 13/11 09:30 (4 chỗ).
 
 ---
 
