@@ -5,13 +5,12 @@
 > **Một quyết định = bốn ý:** đã cân nhắc phương án nào · chọn phương án nào · vì sao · loại các phương án kia vì sao. Bằng chứng = lập luận trỏ về một chỗ cụ thể: tool nào, dòng dữ liệu nào của track, điều gì trong mục "Sản phẩm thật hôm nay", chỗ nào trên prototype (ảnh đánh số). Không chạy agent.
 
 ```markdown
-# Bài nộp LAB5 — [Track] · Nhóm [tên]
 [Danh sách thành viên và việc mỗi người làm — copy bảng từ README]
 | Họ và Tên | Mã Học Viên | Việc đã làm |
 |---|---|---|
-|  |  |  |
-|  |  |  |
-|  |  |  |
+| Phạm Tuấn Cường | 2A202603584 |  |
+| Bùi Xuân Thành | 2A202603521 |  |
+| Nguyễn Minh Đạt | 2A202603582 |  |
 
 ## §1. Lát cắt & phạm vi
 - Lát cắt (chép từ track).
