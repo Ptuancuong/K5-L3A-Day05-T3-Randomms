@@ -225,6 +225,201 @@ Thêm:
 - Luật thêm hoặc tool tách bước (nếu có), và vì sao.
 - Một mức tự chủ đã đổi lời hứa nào với người dùng.
 
+### 4.1. Mức tự chủ cho từng tool
+
+#### Tool 1 — `tra_cuu_dat_cho`
+**Mức: Tự làm.**
+AI được đọc thông tin trong đặt chỗ đang mở: hành khách, trạng thái chuyến và chuyến thay thế.
+
+**Lý do theo cost-of-error:**
+- Tool chỉ đọc, không trực tiếp thay đổi vé hoặc tiền.
+- Nếu đọc sai hoặc dùng dữ liệu cũ, khách có thể chọn phương án không phù hợp. Vì vậy phải hiển thị căn cứ và kiểm tra lại trước khi đổi.
+- Bắt khách hoặc nhân viên duyệt mỗi lần tra cứu làm chậm việc tìm chuyến, có thể khiến chuyến phù hợp hết chỗ.
+
+**Phương án đã cân nhắc:**
+- Chọn tự làm vì đây là bước cung cấp thông tin cần thiết.
+- Loại cần người duyệt vì không giảm đáng kể rủi ro ở bước đọc.
+- Loại cấm vì AI không thể đề xuất có căn cứ nếu không được tra cứu.
+
+#### Tool 2 — `giu_cho_chuyen_moi`
+**Mức: Tự làm có điều kiện.**
+AI chỉ giữ khi đã rõ chuyến, hành khách và có đủ chỗ. Không tự chọn giữa các phương án còn mơ hồ. Giữ chỗ không đồng nghĩa đổi vé.
+
+**Người dùng thấy:**
+- Chuyến và hành khách đang được giữ.
+- Thời hạn giữ 20 phút.
+- Trạng thái “Đang giữ chỗ — chưa đổi vé”.
+- Lựa chọn bỏ giữ chỗ.
+
+**Hết hạn:**
+Chỗ tự nhả sau 20 phút. Muốn tiếp tục, hệ thống phải kiểm tra lại tình trạng chỗ; không dùng lượt giữ hết hạn để đổi vé.
+
+**Lý do theo cost-of-error:**
+- Giữ sai có thể chiếm chỗ tạm thời và gây hiểu nhầm, nhưng chưa dùng quyền đổi miễn phí.
+- Có thể nhả chỗ; hết hạn cũng tự nhả.
+- Chờ nhân viên duyệt có thể khiến khách mất chuyến phù hợp, nhất là khi đang gấp.
+
+**Phương án đã cân nhắc:**
+- Chọn tự làm có điều kiện để bảo vệ phương án khách đã chọn rõ.
+- Loại tự giữ nhiều chuyến vì chiếm chỗ không cần thiết.
+- Loại cần thêm một lần duyệt riêng sau khi khách đã chọn rõ vì tăng thao tác và thời gian chờ.
+- Loại cấm vì khách có thể mất chỗ trong lúc xem lại thông tin.
+
+#### Tool 3 — `doi_chuyen_bay`
+**Mức: Cần người duyệt.**
+
+**Ai duyệt:** khách đang thao tác trong đặt chỗ.
+
+**Người duyệt thấy:**
+- Chuyến cũ và chuyến mới: mã chuyến, hành trình, ngày, giờ.
+- Danh sách hành khách được đổi.
+- Thông tin đổi miễn phí theo chính sách dựng.
+- Cảnh báo “Thao tác này sử dụng lần đổi miễn phí duy nhất”.
+- Thời hạn giữ chỗ và nút quay lại sửa.
+
+**Quá hạn hoặc không duyệt:**
+- Không duyệt thì không đổi.
+- Hết thời hạn giữ thì chặn xác nhận cũ, tra cứu và giữ lại nếu còn chỗ.
+- Thay đổi chuyến hoặc hành khách thì phải xác nhận lại.
+
+**Lý do theo cost-of-error:**
+- Đổi sai khiến khách mất quyền đổi miễn phí, có thể lỡ việc hoặc bị tách khỏi người đi cùng như K2.
+- Khó đảo lại vì chuyến mong muốn có thể hết chỗ; không có tool hoàn tác trong bộ tool đề.
+- Chờ nhân viên cho mọi ca làm mất thời gian, nên khách được tự duyệt ca thông thường sau khi xem đủ thông tin.
+
+**Phương án đã cân nhắc:**
+- Chọn khách duyệt vì khách biết mình cần chuyến nào và đi cùng ai.
+- Loại tự làm theo câu “đổi đi” vì chưa đủ rõ, như K2 và K3.
+- Loại cấm hoàn toàn vì ngăn cả những yêu cầu rõ ràng, hợp lệ.
+- Ca trẻ nhỏ bay một mình hoặc yêu cầu ngoài phạm vi vẫn chuyển nhân viên; xác nhận của khách không thay thế kiểm tra thẩm quyền.
+
+#### Tool 4 — `gui_yeu_cau_hoan_ve`
+**Mức: Cần người duyệt.**
+
+**Ai duyệt:** khách đang thao tác trong đặt chỗ.
+
+**Người duyệt thấy:**
+- Vé và từng hành khách được yêu cầu hoàn.
+- Số tiền, nơi nhận tiền và thời gian xử lý đã được xác minh.
+- Cảnh báo nổi bật “Yêu cầu hoàn sau khi gửi không thể huỷ”.
+- Nút xác nhận riêng “Gửi yêu cầu hoàn vé”.
+
+Fixture gốc chưa cung cấp số tiền và nơi nhận tiền cụ thể. Nếu chưa đủ dữ liệu, hệ thống không cho gửi và chuyển nhân viên. Bộ dữ liệu giả bổ sung R1 cho phép kiểm tra nhánh đủ dữ liệu; phải ghi nhãn nguồn giả và không trình bày như kết quả tra cứu dịch vụ thật.
+
+**Quá hạn hoặc không duyệt:**
+- Không xác nhận thì không gửi.
+- Không tự gửi khi khách im lặng.
+- Khi dữ liệu hoàn thay đổi hoặc không còn được xác nhận là hợp lệ, yêu cầu xem lại và duyệt lại.
+- Không tự đặt thời hạn hoàn ngoài dữ liệu được cung cấp.
+
+**Lý do theo cost-of-error:**
+- K4 cho thấy AI có thể gửi hoàn khi khách vẫn muốn xem chuyến thay thế.
+- Gửi rồi không huỷ được; khách có thể mất phương án bay và phải chờ xử lý tiền.
+- Một bước xác nhận rõ tạo thêm thời gian nhưng cần thiết để tránh hậu quả không đảo.
+- Chờ nhân viên cho mọi ca cũng gây chậm, nên chỉ chuyển khi thiếu dữ liệu, ngoài phạm vi hoặc có tranh chấp.
+
+**Phương án đã cân nhắc:**
+- Chọn cần duyệt riêng sau khi đủ dữ liệu.
+- Loại tự làm vì suy đoán ý định không đủ để gửi yêu cầu không thể huỷ.
+- Loại cấm hoàn toàn vì khách có nhu cầu rõ vẫn cần được hỗ trợ.
+- Loại dùng nút “Đồng ý” chung chung vì khách có thể không biết đang đồng ý xem thông tin hay gửi yêu cầu.
+
+#### Tool 5 — `chuyen_nhan_vien`
+**Mức: Tự làm khi có lý do cần chuyển.**
+Áp dụng cho trẻ nhỏ bay một mình, đổi tên, báo đổi nhầm, thiếu dữ liệu quan trọng hoặc khách yêu cầu gặp người.
+
+**Người dùng thấy:**
+- Lý do chuyển.
+- Trạng thái yêu cầu chuyển.
+- Thông tin đã được gửi cho nhân viên.
+- Không có cam kết thời gian phản hồi nếu chưa có dữ liệu hàng đợi.
+
+**Lý do theo cost-of-error:**
+- Chuyển không cần thiết khiến khách chờ và có thể mất chỗ.
+- Không chuyển ca vượt quyền có thể dẫn đến đổi sai hoặc hứa việc AI không làm được.
+- Tool có thể đảo lại, nhưng thời gian đã chờ không lấy lại được.
+- Vì vậy chỉ chuyển đúng tình huống và gửi kèm ngữ cảnh để khách không phải kể lại từ đầu.
+
+**Phương án đã cân nhắc:**
+- Chọn tự chuyển trong ca vượt thẩm quyền, đồng thời báo rõ cho khách.
+- Loại chuyển mọi yêu cầu vì làm chậm ca đơn giản.
+- Loại chỉ chuyển khi khách tự yêu cầu vì khách có thể không nhận biết rủi ro.
+
+### 4.2. Tool khó xếp nhất
+**Tool:** `gui_yeu_cau_hoan_ve`.
+
+
+**Ba phương án đã cân nhắc:**
+
+
+| Thành viên | Mức chọn ban đầu | Lý do |
+|---|---|---|
+| Thành | Tự làm | Muốn xử lý nhanh khi khách yêu cầu hoàn, tránh thời gian chờ nhân viên. |
+| Đạt | Cần người duyệt | K4 có hai ý định xung đột; cần khách xem lại và xác nhận trước hành động không thể huỷ. |
+| Cường | Cấm | Lo ngại gửi nhầm yêu cầu hoàn sẽ làm khách mất phương án bay và không thể rút lại. |
+
+**Quyết định cuối: Cần khách duyệt.**
+
+Sau khi cân nhắc, nhóm thống nhất chỉ gửi yêu cầu hoàn khi khách đã xem đầy đủ thông tin được xác minh và xác nhận riêng. Nếu thiếu thông tin quan trọng, hệ thống dừng và chuyển nhân viên.
+
+Nhóm loại mức tự làm vì K4 cho thấy ý định có thể chưa rõ; loại mức cấm vì làm chậm cả yêu cầu hoàn hợp lệ.
+
+
+
+### 4.3. Thử mức trên ba kịch bản
+
+Bảng dưới là kiểm tra bằng lập luận thiết kế. Kiểm tra logic trên prototype bằng DOM giả lập được ghi riêng ở §6; chưa xác minh giao diện trên trình duyệt.
+
+| Kịch bản | Hệ thống làm gì? | Cái sai có bị chặn? | Còn làm khi lẽ ra phải hỏi? | Khách có chờ vô ích? |
+|---|---|---|---|---|
+| K2: “Chuyến tối còn chỗ thì đổi đi” | Tra cứu, báo chỉ còn 1 chỗ cho 2 người, hỏi lại; chưa giữ hoặc đổi chuyến chưa được chọn rõ | Có, nhờ chặn thiếu chỗ và yêu cầu xác nhận | Không, không tự chọn người hoặc chuyến khác | Không cần chờ nhân viên để xem phương án đủ chỗ |
+| K4: “Hoàn hết… có chuyến sớm thì đổi” | Hỏi chọn hướng đổi hay hoàn; chưa gọi tool thay đổi vé | Có, không gửi hoàn theo nửa đầu câu | Không, chỉ tra cứu và làm rõ | Một câu hỏi bổ sung là cần thiết |
+| Bình thường: “Giữ BM 201 lúc 07:00 ngày 13/11 cho An và Bình” | Kiểm tra, giữ 2 chỗ, báo chưa đổi vé; hiển thị màn xem lại và xác nhận | Có, kiểm tra đủ chỗ và duyệt trước đổi | Không đổi trước xác nhận | Không phải chờ nhân viên |
+
+### 4.4. Luật bổ sung và tách bước
+
+1. **Tách giữ chỗ khỏi đổi vé.**
+   Giữ thành công chỉ tạo chỗ tạm thời, không được thông báo là đã đổi vé.
+
+2. **Tách xem phương án hoàn khỏi gửi yêu cầu hoàn.**
+   “Xem chi tiết hoàn” chỉ mở thông tin. Chỉ nút xác nhận riêng mới có thể gọi `gui_yeu_cau_hoan_ve`.
+
+3. **Xác nhận gắn với đúng nội dung.**
+   Xác nhận chỉ áp dụng cho chuyến, ngày và hành khách đã hiển thị. Sửa nội dung thì xác nhận cũ mất hiệu lực.
+
+4. **Không tự tách người lớn và trẻ nhỏ.**
+   Nếu khách yêu cầu trẻ bay riêng, chuyển nhân viên thay vì chỉ yêu cầu khách bấm đồng ý.
+
+5. **Kiểm tra trạng thái trước khi thực hiện.**
+   Không dùng lượt giữ hết hạn; không gửi lặp yêu cầu đổi hoặc hoàn đang xử lý.
+
+6. **Chỉ báo thành công khi có kết quả thành công.**
+   Khi tool lỗi hoặc chưa rõ kết quả, hiển thị trạng thái chưa xác định và kiểm tra lại; không tự gọi lặp hành động khó đảo.
+
+7. **Bổ sung hành vi nhả chỗ đã giữ.**
+   Nút “Bỏ giữ chỗ” phải thực sự nhả lượt giữ. Trong prototype, hành vi này được mô phỏng; nếu triển khai thật cần thao tác tương ứng, không chỉ xoá thông tin trên màn hình.
+
+### 4.5. Mức tự chủ thay đổi lời hứa với người dùng
+
+Vì `doi_chuyen_bay` và `gui_yeu_cau_hoan_ve` cần khách duyệt, hệ thống dùng lời hứa:
+
+> “Tôi giúp bạn tìm và giữ phương án phù hợp. Tôi chỉ đổi vé hoặc gửi yêu cầu hoàn sau khi bạn xem lại và xác nhận rõ.”
+
+Lời hứa này phân biệt việc AI đã làm với việc đang chờ khách quyết định. Khách không bị hiểu nhầm rằng chọn một phương án hoặc mở chi tiết đã làm thay đổi vé.
+
+
+### 4.6. Luật phục hồi và hiệu lực xác nhận
+
+- Khi số chỗ không còn đủ trước xác nhận: không đổi, nhả lượt giữ mô phỏng và cho chọn phương án khác.
+- Tra cứu lỗi trước khi gửi: báo chưa gửi đổi, cho thử lại hoặc chuyển người.
+- Mất kết nối sau khi gửi: trạng thái **chưa rõ kết quả**; khoá gửi đổi/hoàn mới. Chỉ tra cứu lại trạng thái hoặc chuyển người; không tự gửi lại lệnh.
+- Nút tra cứu lại trong demo dùng kết quả dựng “lượt đổi trước thành công”, không tạo lượt đổi thứ hai.
+- Hoàn R1 chỉ được gửi khi báo giá còn hiệu lực và khách đánh dấu đã hiểu hậu quả. Quay lại xem chuyến hoặc thay bộ dữ liệu làm mất hiệu lực đồng ý cũ.
+- Sau gửi hoàn: chặn hoàn lặp và đổi chuyến từ cùng bộ vé; chỉ còn đường hỗ trợ hoặc bắt đầu lại bản mô phỏng.
+- Bắt đầu lại chỉ xoá phiên thử trên trình duyệt, không phải hoàn tác giao dịch.
+
+
+
 ## §5. Prototype  (chặng 5)
 ### 5.1. File, công cụ và phần mô phỏng
 - File chạy: [prototype/index.html](prototype/index.html).
